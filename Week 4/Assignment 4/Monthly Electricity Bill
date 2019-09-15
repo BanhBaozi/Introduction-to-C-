@@ -1,0 +1,82 @@
+///c++
+#include <iostream>
+
+using namespace std;
+
+int
+main ()
+{
+  float avgMonthlyBill;
+  float bill1, bill2, bill3, bill4, bill5;
+    
+    
+  cout << "Enter your first month's electric bill: ";
+  cin >> bill1;
+  if(bill1 >='A' && bill1 <= 'Z') && (bill1>= 'a' && bill1<='z') {
+    cout << "Invalid input. Enter integers only."
+    break;
+  }
+  
+  cout << "Enter your second month's electric bill: ";
+  cin >> bill2;
+  if(bill2 >= 'A' && bill2 <= 'Z') && (bill2 >='a' && bill2 <='z') {
+    cout << "Invalid input. Enter integers only."
+    break;
+  }
+  
+  
+  cout << "Enter your third month's electric bill: ";
+  cin >> bill3;
+  if(bill3 >= 'A' && bill3 <= 'Z') && (bill3 >='a' && bill3 <='z') {
+    cout << "Invalid input. Enter integers only."
+    break;
+  }
+  
+  
+  cout << "Enter your fourth month's electric bill: ";
+  cin >> bill4;
+  if(bill4 >= 'A' && bill4 <= 'Z') && (bill4 >='a' && bill4 <= 'z') {
+    cout << "Invalid input. Enter integers only."
+    break;
+  }
+  
+  
+  cout << "Enter your fifth month's electric bill: ";
+  cin >> bill5;
+  if(bill5 >= 'A' && bill5 <= 'Z') && (bill5>= 'a' && bill5 <='z') {
+    cout << "Invalid input. Enter integers only."
+    break;
+  }
+  
+  
+  
+  
+  
+
+  avgMonthlyBill = (bill1 + bill2 + bill3 + bill4 + bill5) / 5;
+
+  if (avgMonthlyBill > 100)
+    {
+    cout << "Warning! Too much gas and electricity is being used!" << endl;
+        
+    }
+    
+    else if(avgMonthlyBill >= 60 && avgMonthlyBill <= 100){
+        cout << "Not bad! A typical amount of gas and electricity is being used." << endl;
+        
+    }
+    else if(avgMonthlyBill < 25){
+        cout << "Congratuations! Your average monthly bill is low. You are conserving gas and electricity." << endl;
+    }
+
+char x;
+
+cout << “To start over press Y(yes) or N(o) to exit.” ;
+cin >> x;
+
+if(x == ‘n’) {
+break; 
+}
+
+}
+
