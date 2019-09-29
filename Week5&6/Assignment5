@@ -1,0 +1,34 @@
+#include<iostream>
+
+using namespace std;
+
+int main() {
+
+	int sumOfScores = 0; //accumulator
+
+	float creditScore=0;
+
+	const int sentinel = -1; //exit value
+	
+	int numOfEntries = 0; //counter
+
+	while ((creditScore!=sentinel)&&(numOfEntries != 5)) {
+		cout << "Please enter a credit score[or enter -1 to quit]: " << endl;
+		cin >> creditScore;
+	    (sumOfScores+=creditScore);
+		numOfEntries++;
+	}
+
+	if (creditScore == -1) {
+		cout << "NO credit score was entered! Program will now terminate." << endl;
+	}
+	else{
+		float average = (sumOfScores) / (numOfEntries);
+		cout << "The average credit score from the 5 different companies is " << average << ".\n" << 
+		"The number of entries = " << numOfEntries << ".\n"<<
+		"The some of the credit scores is = " << sumOfScores << "."
+		<< endl;
+	}
+	
+	
+}
