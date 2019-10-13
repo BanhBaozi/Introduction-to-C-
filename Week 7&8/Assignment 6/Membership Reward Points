@@ -1,0 +1,103 @@
+//Jenny Nguyen
+//Assignment 6
+//CSIS 294/
+//A business wants to record the reward points a client earns per month. 
+//The reward points are based on the type of membership the client has and how much the client purchased for the month. 
+//The program has to be written to include a separate function for each membership the client has. 
+//Display the reward points as integers.
+
+//The following table shows the types of membership, total monthly purchase
+//and the reward points.
+
+//Individual Membership >> 0-100 and 101 & over purchase per month >>  15% and 20% of total Monthly purchase
+//Family Membership >> 0-100 and 101 & over purchase per month >>  20% and 25% of total Monthly purchase
+//Individual Membership >> 0-100 and 101 & over purchase per month >>  25% and 30% of total Monthly purchase
+
+
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//Function prototypes
+void Individual(double total);
+void Family(double total);
+void Gold(double total);
+void showMenu();
+
+int main() {
+
+	//initialization
+	double purchasePerMonth = 0.0;
+	int menuSelection;
+
+	//constants for Menu selection
+	const int
+		INDIVIDUAL_SELECTION = 1,
+		FAMILY_SELECTION = 2,
+		GOLD_SELECTION = 3,
+		EXIT_SELECTION = 4;
+
+	cout << "Please enter your purchase this month: ";
+	cin >> purchasePerMonth;
+
+	showMenu();
+	cout << "Please select your client membership type: ";
+	cin >> menuSelection;
+
+	if (menuSelection == 1) {
+		Individual(purchasePerMonth);
+	}
+	if (menuSelection == 2) {
+		Family(purchasePerMonth);
+	}
+	if (menuSelection == 3) {
+		Gold(purchasePerMonth);
+	}
+	else {
+		cout << "\nExiting Program";
+	}
+}
+int rewardPoints = 0;
+
+void Individual(double purchasePerMonth) {
+	if (purchasePerMonth <= 100) {
+		rewardPoints = 0.15 * purchasePerMonth;
+	}
+	else {
+		rewardPoints = 0.20 * purchasePerMonth;
+	}
+	cout << "Your reward points are >> " << rewardPoints;
+}
+
+void Family(double purchasePerMonth) {
+	if (purchasePerMonth <= 100) {
+		rewardPoints = 0.2 * purchasePerMonth;
+	}
+	else{
+		rewardPoints = 0.25 * purchasePerMonth;
+	}
+	cout << "Your reward points are >> " << rewardPoints;
+
+}
+void Gold(double purchasePerMonth) {
+	if (purchasePerMonth <= 100) {
+		rewardPoints = 0.25 * purchasePerMonth;
+	}
+	else {
+		rewardPoints = 0.30 * purchasePerMonth;
+	}
+	cout << "Your reward points are >> " << rewardPoints;
+
+}
+
+void showMenu() {
+	cout << "\n\t\ Client Membership Type Menu\n\n"
+		<< "1) Individual \n"
+		<< "2) Family \n"
+		<< "3) Gold \n"
+		<< "4) Enter to exit program\n"
+		<< "Please enter your selection\n";
+}
+
+
