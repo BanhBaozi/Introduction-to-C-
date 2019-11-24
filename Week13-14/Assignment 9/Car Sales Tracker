@@ -1,0 +1,159 @@
+#include<iostream>
+#include<iomanip>
+#include <string>
+//Jenny Nguyen
+//CSIS296
+//FA2019
+//Assignment 9
+using namespace std;
+
+struct carProfile{
+	string carModel;
+	string carManufacturer;
+	int carYear;
+	double carPrice;
+	};
+
+void displayCarMenu(){
+	cout << "\n CAR SALES TRACKER\n";
+	cout << "1. Add vehicle: \n";
+	cout << "2. Edit vehicle information: \n";
+	cout << "3. Display cars: \n";
+	cout << "4. Exit program: \n";
+}
+
+void addNewCar(struct carProfile array[], int index) {
+	cin.ignore();
+	cout << "\nModel: ";
+	cin.ignore();
+	getline(cin, array[index].carModel);
+	
+	cout << "\nManufacturer: ";
+	cin.ignore();
+	getline(cin, array[index].carManufacturer);
+
+	cout << "\nYear: ";
+	cin.ignore();
+	cin >> array[index].carYear;
+
+	cout << "\nPrice: ";
+	cin.ignore();
+	cin >> array[index].carPrice;
+
+
+	cout << "\nThe information for car";
+	cout << " number " << index << " has been stored. "<< endl;
+}
+
+void editVehicleInfo(struct carProfile array[], int num, int size) {
+	if (num < 0 || num > size) {
+		cout << "ERROR! Invalid Car Number entered!" << endl;
+	}
+	else{
+
+		cout << "\nModel: " << array[num].carModel << endl;
+
+		cout << "Manufacturer: " << array[num].carManufacturer << endl;
+
+		cout << "Year: " << array[num].carYear << endl;
+
+		cout << "Sale Price: " << array[num].carPrice << endl;
+		
+		cout << endl;
+
+		cout << "Edit the account information of ";
+		cout << "Car " << num << endl;
+
+
+		//prompting user to edit car information
+		cout << "\nModel: ";
+		cin.ignore();
+		getline(cin, array[num].carModel);
+
+
+		cout << "\nManufacturer: ";
+		cin.ignore();
+		getline(cin, array[num].carManufacturer);
+
+		cout << "\nYear: ";
+		cin.ignore();
+		cin >> array[num].carYear;
+
+		cout << "\nPrice: ";
+		cin.ignore();
+		cin >> array[num].carPrice;
+
+		cout << "Information for car " << num << " has been updated." << endl;
+	}
+}
+
+void displayAllCarInfo(struct carProfile array[], int size) {
+	for (int x = 0; x < size; x++) {
+		cout << "\nModel " << array[x].carModel << endl;
+		cout << "\nManufacturer: " << array[x].carManufacturer << endl;
+		cout << "\nYear: " << array[x].carYear << endl;
+		cout << "\nPrice: " << array[x].carPrice << endl;
+	}
+
+	cin.ignore();
+	cout << "\nPress yes[y] to return..." << endl;
+	if (cin.get() == 'y'){
+		return;
+	}
+}
+
+int main() {
+	int choice = 0;
+	int num = 0;
+	int x = 0;
+	int y = 0;
+
+	carProfile carProfiles_array[30]; //max car profiles set in array
+
+	displayCarMenu();
+
+	cout << "Please enter a choice >>";
+	cin >> choice;
+
+	while (true) {
+		switch (choice) {
+		case 1: //adding new vehicle
+			addNewCar(carProfiles_array, x);
+			x++;
+			break;
+
+
+		case 2: //editing vehicle information
+			cout << "Please enter which car you'd like to edit >>";
+			cin >> num;
+			editVehicleInfo(carProfiles_array, num, x);
+			break;
+
+		case 3: //Show all cars recorded
+			displayAllCarInfo(carProfiles_array, x);
+			break;
+
+		case 4: //Exit program or default returning to menu
+			return 0;
+
+
+		default:
+			y = 1;
+
+			cout << "Please enter a valid number choice of ONLY 1, 2, 3, and 4:" << endl;
+
+			displayCarMenu();
+
+			cout << "Please enter a choice: ";
+			cin >> choice;
+		}
+
+		if (y != 1) {
+			displayCarMenu();
+			cout << "Please enter a choice: ";
+			cin >> choice;
+		}
+	}
+	return 0;
+}
+	
