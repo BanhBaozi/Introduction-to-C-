@@ -1,0 +1,269 @@
+
+//Include the required header files.
+#include <iostream>
+#include <string>
+
+//Use the standard naming convention.
+using namespace std;
+
+//Define the structure customerAccount containing required
+//fields.
+struct customerAccount{
+//Declare the required variables
+     string name, address, city, state, zip, phone;
+     double bal;
+     string date;
+};
+
+ 
+
+//Define the function menu().
+void menu(){
+     //Display the menu.
+     cout << "\n********* MENU ******************" << endl;
+     cout << "1. Enter new account information" << endl;
+     cout << "2. Change account information" << endl;
+     cout << "3. Display all account information" << endl;
+     cout << "4. Exit the program" << endl;
+}
+
+//Define the function createNewAccount()
+void createNewAccount(struct customerAccount arr[], int ind)
+{
+     //Prompt the user to get the values of the required
+     //fields of the structure array element.
+     cout << "\nCustomer name: ";
+     cin.ignore();
+     getline(cin, arr[ind].name);
+     cout << "Customer address: ";
+     getline(cin, arr[ind].address);
+     cout << "City: ";
+     getline(cin, arr[ind].city);
+     cout << "State: ";
+     getline(cin, arr[ind].state);
+     cout << "ZIP Code: ";
+     getline(cin, arr[ind].zip);
+     cout << "Telephone: ";
+     getline(cin, arr[ind].phone);
+     cout << "Account balance: ";
+     cin >> arr[ind].bal;
+     cout << "Date of last payment: ";
+     cin.ignore();
+
+     getline(cin, arr[ind].date);
+
+
+     //Dispaly an appropriate message to show the information
+     cout << "You have entered information for customer";
+     cout << " number " << ind << endl;
+}
+
+ 
+
+//Define the function changeAccountInfo()
+void changeAccountInfo(struct customerAccount arr[],int num, int sz){
+//Check if the given customer number is valid or not.
+     if (num < 0 || num > sz){
+          //display the error message
+          cout << "Invalid Customer Number!" << endl;
+     }
+     //Otherwise,
+     else
+     {
+          //Dispaly the account information of the customer
+          //having given customer number in the array.
+          cout << "\nCustomer name: "
+               << arr[num].name << endl;
+          cout << "Customer address: " <<
+               arr[num].address << endl;
+          cout << "City: " << arr[num].city
+               << endl;
+          cout << "State: " << arr[num].state
+               << endl;
+          cout << "ZIP Code: " << arr[num].zip
+               << endl;
+          cout << "Telephone: " << arr[num].phone
+               << endl;
+          cout << "Account balnace: "
+               << arr[num].bal << endl;
+          cout << "Date of last payment: "
+               << arr[num].date << endl;
+          cout << endl;
+          cout << "Edit the account information of the ";
+          cout << "customer " << num << endl;
+          //Prompt the user to edit the information of the
+          //required customer account.
+          cout << "\nCustomer name: ";
+          cin.ignore();
+          getline(cin, arr[num].name);
+          cout << "Customer address: ";
+          getline(cin, arr[num].address);
+          cout << "City: ";
+          getline(cin, arr[num].city);
+          cout << "State: ";
+          getline(cin, arr[num].state);
+          cout << "ZIP Code: ";
+          getline(cin, arr[num].zip);
+          cout << "Telephone: ";
+          getline(cin, arr[num].phone);
+          cout << "Account balance: ";
+          cin >> arr[num].bal;
+          cout << "Date of last payment: ";
+          cin.ignore();
+          getline(cin, arr[num].date);
+
+          //Dispaly an appropriate message to show that the information
+          cout << "Account information for customer " <<
+          num << " has been updated." << endl;
+     }
+}
+
+
+//Define the function displayAccountInfo()
+
+void displayAccountInfo(struct customerAccount arr[], int sz){
+     //Start the for loop till the size of the array.
+     for (int i = 0; i < sz; i++)
+     {
+          //Display the required fields of the current
+          //structure array element.
+          cout << "\nCustomer name: " << arr[i].name
+               << endl;
+          cout << "Customer address: "
+               << arr[i].address << endl;
+          cout << "City: " << arr[i].city << endl;
+          cout << "State: " << arr[i].state << endl;
+          cout << "ZIP Code: " << arr[i].zip << endl;
+          cout << "Telephone: " << arr[i].phone
+               << endl;
+          cout << "Account balnace: "
+               << arr[i].bal << endl;
+          cout << "Date of last payment: "
+               << arr[i].date << endl;
+     }
+
+     //Ignore the input buffer.
+     cin.ignore();
+     //Prompt the user to hit enter button to continue.
+     cout << "\nPress enter to continue..." << endl;
+
+    //check the condition
+
+     if (cin.get() == '\n')
+     {
+          //return statement
+          return;
+     }
+}
+//Start the execution of the main() method.
+int main(){
+     //Declare and initialize the required variables.
+     int ch = 0;
+     int i = 0, f = 0;
+     int num = 0;
+     //Create an array of defined structure customerAccount
+     //having maximum size of 20.
+     
+     customerAccount cus_acc_arr[20];
+     //Call the function menu() to display the menu of
+     //choices
+
+     menu();
+
+     //Prompt the user to enter a choice.
+
+     cout << "Please enter a choice: ";
+     cin >> ch;
+     //Start a while loop.
+
+     while (true)
+     {
+          //Start the switch expressio over menu choice.
+          switch (ch) {
+               //Define case 1.
+               case 1:
+                     //Call the function createNewAccount()
+                     //to add a new element to the array of
+                     //structure.
+                     createNewAccount(cus_acc_arr, i);
+                     //Increment the size of the array.
+                     i++;
+                     break;
+
+               //Define case 2.
+
+               case 2:
+                     //Prompt the user to enter a customer
+                     //number.
+                     cout << "Enter a customer number to ";
+                     cout << "change the account ";
+                     cout << "information:" << endl;
+                     cout << "Customer number: ";
+                     cin >> num;
+                     //Call the function changeAccountInfo()
+                     //with the entered customer number,
+                     //array of structure, and size of the
+                     //array.
+                    changeAccountInfo(cus_acc_arr, num,i);
+                     break;            
+               //Define case 3.
+               case 3:
+                     //Call the fucntion
+                     //displayAccountInfo() to display the
+                     //account information of each customer.
+                    displayAccountInfo(cus_acc_arr, i);
+                     break;             
+
+               //Define case 4.
+               case 4:                   
+                      //return statement
+                     return 0;
+
+               //Define the default case.
+               default:
+                     //Assign 1 to the flag variable f.
+                     f = 1;
+                    //Prompt the user again for the valid
+                     //menu choice
+
+                     cout << "Please enter a valid choice ";
+                     cout << "between 1, 2, 3, and 4:"
+                          << endl;
+
+                    //call the method
+
+                     menu();
+
+ 
+
+                      //get the choice from the user
+
+                     cout << "Please enter a choice: ";
+
+                     cin >> ch;
+
+ 
+          }
+
+          //If flag value is not 1, then call the menu()
+          //function and prompt the user to enter menu
+          //choice.
+          if (f != 1) {
+               //call the method
+               menu();
+               //get the choice from the user
+               cout << "Please enter a choice: ";
+               cin >> ch;
+
+          }
+
+     }
+   
+
+    //return statement
+
+     return 0;
+
+ 
+
+}
